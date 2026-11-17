@@ -345,3 +345,7 @@ The same marketplace entry for Claude Code.
 Runs the helper unit tests and the package integrity check on every push.
 
 Version history is in [CHANGELOG.md](plugins/biomedical-publication-suite/CHANGELOG.md).
+
+## License
+
+MIT. See [LICENSE](LICENSE). Sources that informed the design keep their own licenses and are credited in the [third-party notices](plugins/biomedical-publication-suite/THIRD_PARTY_NOTICES.md).

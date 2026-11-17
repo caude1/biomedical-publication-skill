@@ -40,3 +40,7 @@ Keep one durable source for an installation (this plugin folder, wherever it is 
 Run `python3 -m unittest discover -s tests -v` for deterministic regressions and `python3 scripts/validate_suite.py` for package/link/resource checks. [Behavioral evaluations](tests/behavioral-evals.json) and [evaluation instructions](tests/EVALUATION.md) exercise actual fresh-agent writing and reasoning. Code tests do not establish prose quality or scientific correctness. Rerun targeted behavioral cases when changing editorial instructions.
 
 The design favors manual workflows: prose is judged by reading, and helpers only check facts a machine can settle. No automatic hooks, mandatory external service, autonomous submission or machine readiness certification is installed.
+
+## License
+
+MIT. See [LICENSE.txt](skills/biomedical-publication-suite/LICENSE.txt). Sources that informed the design keep their own licenses and are credited in the [third-party notices](THIRD_PARTY_NOTICES.md).

@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.3.2 (2026-11-17)
+
+Released under the MIT License. The license text is at the repository root and in the skill folder.
+
 ## 1.3.1 (2026-11-17)
 
 Install instructions point to the public repository, `caude1/biomedical-publication-skill`, and the manifests name the GitHub account as the author.

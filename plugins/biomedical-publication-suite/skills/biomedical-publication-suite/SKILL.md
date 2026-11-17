@@ -1,6 +1,7 @@
 ---
 name: biomedical-publication-suite
 description: Draft, revise, or review biomedical manuscripts from study evidence. Use for a paper's narrative, scientific prose, figures and supplements, literature and citation checks, journal adaptation, coauthor materials, or reviewer responses. Includes reporting from existing analyses and preparing submission files.
+license: MIT
 ---
 
 # Biomedical Publication Suite

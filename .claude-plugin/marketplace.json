@@ -1,0 +1,13 @@
+{
+  "name": "biomedical-publication-suite",
+  "owner": {
+    "name": "caude1"
+  },
+  "plugins": [
+    {
+      "name": "biomedical-publication-suite",
+      "source": "./plugins/biomedical-publication-suite",
+      "description": "Evidence-grounded biomedical manuscript drafting, revision, literature and citation verification, statistical reporting, journal adaptation, and submission checks."
+    }
+  ]
+}

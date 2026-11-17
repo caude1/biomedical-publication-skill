@@ -1,0 +1,27 @@
+{
+  "name": "biomedical-publication-suite",
+  "version": "1.3.1",
+  "description": "Evidence-grounded biomedical manuscript drafting, revision, literature and citation verification, statistical reporting, journal adaptation, and submission checks.",
+  "author": {
+    "name": "caude1"
+  },
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Biomedical Publication Suite",
+    "shortDescription": "Reason, write, and refine biomedical publications.",
+    "longDescription": "Use scientific reasoning and editorial judgment to find the strongest defensible manuscript story, build coherent publication prose, refine concise captions, preserve author voice and scientific meaning, verify sources, and prepare journal and reviewer materials. Optional helpers support specific checks without imposing automated workflows.",
+    "developerName": "caude1",
+    "category": "Research",
+    "capabilities": [
+      "Find the manuscript story",
+      "Draft full manuscripts",
+      "Refine abstracts and display text",
+      "Humanize scientific prose without detector gaming",
+      "Preserve author voice and protected scientific content",
+      "Audit before-and-after revision invariants",
+      "Prepare reviewer responses",
+      "Check submission readiness"
+    ],
+    "defaultPrompt": "Use $biomedical-publication-suite to revise this biomedical artifact while preserving its evidence, claim strength, and authorial voice."
+  }
+}

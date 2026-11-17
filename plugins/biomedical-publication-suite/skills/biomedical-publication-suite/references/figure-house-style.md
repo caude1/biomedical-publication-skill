@@ -1,0 +1,70 @@
+# Figure house style
+
+This is the default look for a biomedical figure when nothing else decides it. It is guidance to start from, never a rule set. Use your own judgment about which parts to apply: one figure may take the whole system, another only the type scale, and another none of it because the data need a different form. Three things outrank it, in this order: the target journal's current artwork instructions, the design already established in the manuscript or project (new figures match the existing set), and whatever makes this comparison clearest.
+
+## What the style is for
+
+The aim is a figure that would look at home in JAMA, NEJM or a Nature journal and that a reader can interpret before reading the caption.
+
+- **Restraint.** White background, one sans serif, a small type scale, thin lines. Color appears only where it carries meaning. Decorative cards, shaded boxes, gradients, drop shadows and icons make a figure look generated; leave them out.
+- **Hierarchy.** The comparison the paper is about gets the strongest contrast. Gridlines, axis lines, outlines and reference marks stay quiet and never compete with the data.
+- **Consistency.** A group keeps its color, marker shape, line type and order in every figure and table of the paper. Marker size is uniform unless size encodes something.
+- **Self-sufficiency.** Every percentage shows its denominator, counts say what they count, and digits line up in columns. Put what identifies the data in the figure and the detail in the legend. Do not repeat in an end label what the axis or an adjacent table already gives.
+- **Room.** Even spacing between rows and panels, each panel title clearly attached to its own panel, white space balanced, nothing cramped or touching an edge. Write labels out ("emergency department", not "department").
+
+## A print-scale starting point
+
+| Element | A working choice |
+|---|---|
+| Canvas | Compose at the final printed width, usually 7.0 in for two columns or about 3.4 in for one, and let the content set the height. Fix panel and header sizes in physical units so type stays at its stated size. Panels can differ in width. Keep at least 0.05 in of white on every side. |
+| Type | Arial or a comparable sans serif, sentence case. At final size: 8.5 pt for the panel letter and panel title, 8 pt for axis and key titles, 7.5 pt for tick labels, table entries and primary data labels, 6.5 pt for secondary notes. Increase type or simplify the layout if it is hard to read. |
+| Weight | Bold for the panel letter and for column and section heads. Panel titles are usually regular weight; make them bold when a busy multipanel figure needs stronger separation. |
+| Panel headings | A small outlined square (about 0.15 in) around a bold letter at the left edge, with a short title on the same baseline, in a band above the panel. A single-panel figure needs no letter. The overall figure title and shared definitions belong in the manuscript legend; a standalone graphic for teaching or a slide may carry a title in the image. |
+| Ink and guides | Near-black text `#1A1A1A`, muted ink for tick labels and axis lines `#4D4D4D`, pale gridlines `#E2E2E2`, reference and null lines `#9A9A9A`. Gridlines only in the direction used to read values; an axis line only where values are read from it. Keep lines thin: a ggplot2 `linewidth` of about 0.3 to 0.45, which prints at roughly 0.6 to 1 pt. |
+| Data colors | Navy `#1B4590` for the focal series and vermilion `#D55E00` when a second series deserves equal attention. Gray `#8C8C8C` (light `#C9C9C9`) for comparison or context. A third group can take a dark neutral `#2B2B2B` with its own marker and a dashed line in preference to a third hue. Repeat every color distinction with shape, fill or line type so the figure survives grayscale. |
+| Scales | Ordered categories: a light-to-dark ramp of one hue, such as navy `#8AA9DC`, `#5280C4`, `#2B59A8`, `#14306A`. A diverging scale only when there is a meaningful reference value, centered on it. Choose white or dark text on a filled cell by contrast. Give missing and suppressed cells their own key. |
+| Labels and keys | Axis titles carry the measure and unit after a comma ("Time to follow-up, days"). Use direct labels for a few well-separated series; otherwise a compact one-row key or a small key inside the plot. Avoid a triangle as an end-of-line marker, which reads as an arrow. Give the unit once: when the axis title says "%", the tick labels are plain numbers. |
+| Numbers | Thousands separators in counts, a true minus sign, "to" inside an interval that includes a negative value, and one more decimal when a confidence limit would otherwise print as the null value. Round half away from zero so a printed percentage matches hand calculation (R and Python round half to even by default), and use the same number of decimals down a column. P values follow the journal ("P < .001" in AMA style). |
+
+A small ggplot2 starting theme for a panel whose **vertical** axis carries the outcome follows. It keeps the legend so several series remain identifiable until direct labels are in place. Text sizes in theme elements are in points; 0.3 is the ggplot2 `linewidth`.
+
+```r
+library(ggplot2)
+
+house_theme <- theme_minimal(base_family = "Arial", base_size = 7.5) +
+  theme(
+    text = element_text(colour = "#1A1A1A"),
+    axis.text = element_text(size = 7.5, colour = "#4D4D4D"),
+    axis.title = element_text(size = 8),
+    panel.grid.minor = element_blank(),
+    panel.grid.major.x = element_blank(),
+    panel.grid.major.y = element_line(colour = "#E2E2E2", linewidth = 0.3),
+    axis.line.x = element_line(colour = "#4D4D4D", linewidth = 0.3),
+    axis.ticks.x = element_line(colour = "#4D4D4D", linewidth = 0.3),
+    axis.ticks.length = grid::unit(2.5, "pt"),
+    legend.position = "top",
+    plot.margin = margin(4, 8, 4, 4, unit = "pt")
+  )
+```
+
+Add `house_theme` to the plot, then adjust the elements that suit its geometry. A horizontal interval plot, for example, may need only a vertical null line. The [worked figure](../assets/figure-example.png) and its [R source](../assets/figure-example.R) show one complete two-panel figure built this way from synthetic data, including the fixed-inch layout of a table beside a forest plot. A [subgroup forest plot](../assets/forest-example.png) with its [R source](../assets/forest-example.R) shows the forest convention below. Neither image contains its legend. Write the legend into the manuscript, or into a text file beside the figure while the manuscript is not yet assembled.
+
+## Conventions by figure type
+
+Each of these is one good way to build the display. Depart from it when the data call for something else.
+
+- **Forest plot with an aligned table.** Put row labels, counts, "Estimate (95% CI)", the plotted mark and any P value on shared row centers. Use bold section rows with indented rows beneath, and center each numeric column head over right-aligned digits. Draw intervals as thin lines without end caps, with a solid reference line at 1 for a ratio on a log axis or at 0 for a difference, and no horizontal gridlines. A filled square can mark the focal estimate, an open gray circle a comparison estimate and a diamond a summary. Mark an interval that runs past the axis with an arrowhead. A small muted cue under the axis ("← Lower with A / Higher with A →") tells the reader which direction is which. Name the exposure increment or comparison in the column head, title the axis with the measure and outcome ("Odds ratio for a missed visit (log scale)"), and place ticks at round values. In a subgroup figure, readers will compare the subgroups with one another. That comparison needs an interaction test from the analysis, shown as a column or reported in the legend; if none was run, tell the author and let the legend say so.
+- **Trajectory and time to event.** Use actual time spacing on the axis when slope over elapsed time matters. For estimates at scheduled assessments, points joined by thin lines with vertical interval bars read more exactly than shaded bands; offset the groups slightly so the bars do not overlap. For a time-to-event comparison, consider showing an absolute difference at a clinically relevant time with its interval, a justified time-to-event estimate, or a full-curve test if it adds information, and label the estimand and time horizon. One inferential statement per panel is usually enough. A log-rank P value beside a landmark difference whose interval includes zero reads as a contradiction even when both are correct, so show the one the paper relies on and give the other in the legend with its test named. Distinguish censoring and competing events when they affect the curves. When the paper is about a between-group difference, consider plotting that difference with its own interval; it needs a contrast from the analysis, and separate intervals around each group's mean do not supply it.
+- **Numbers at risk.** With a common start and complete follow-up to a fixed cutoff, starting group sizes in the curve labels can be enough. When staggered entry, censoring or loss to follow-up changes who contributes, align a compact table under selected time ticks, with each row carrying its group's marker and name. Label repeated-measurement counts as *number assessed*; *number at risk* means still under observation and event-free immediately before that time. Follow any venue requirement.
+- **Bars and dots.** Print the value above the bar and the group's size or share under its name. Thin interval bars in ink. For paired observations, a thin gray connector with distinct endpoint markers shows direction and magnitude without a legend entry for every pair.
+- **One outcome with different denominators.** Give each eligible population its own row: events/total with the observed percentage, then the between-group difference and interval for that row in an adjacent forest plot. When the subset is selected after exposure or treatment, present the rows as distinct populations.
+- **Heat maps.** Square cells separated by white hairlines. If a cell shows two values, such as a risk and a group share, separate them by size or weight and state both denominators. Label the ends of the color key ("← Lower / Higher →").
+- **Maps.** A pale neutral fill for context areas and thin gray borders leave the highlighted units easy to find. Give suppressed, unavailable and true-zero areas distinguishable keys, and put group sizes in the legend labels.
+- **Flow diagrams and decision trees.** White boxes with a thin muted border, small closed arrowheads, and counts as "n = X (Y%)" in muted ink. Write each branch question with its actual AND/OR rule, and align comparable branches so a reader can follow one path without crossing connectors. Distinguish outcomes observed in a group from predictions for a new patient.
+- **Statistics on the figure.** Estimates with intervals are the content. Sample sizes, event counts and exact P values can sit in aligned columns when readers will want them and the journal allows. Prefer the interval or the exact P value to significance stars.
+
+## Read the export
+
+A figure that has not been looked at is not finished. Open the exported file at its intended physical width and, when relevant, inside the manuscript or coauthor PDF. Can someone starting from the figure say what one mark represents, the denominator of a percentage, the comparator and the meaning of an interval? Inspect the tight places first: direct labels at the right edge, long headings, row alignment in a forest table, clipped or duplicated category labels, legend entries that do not match the data, and keys in grayscale. Reflow a crowded figure before shrinking its text. For a near-final figure, a figure-first reader in the [multi-round cold reads](cold-reader-rounds.md) tests this better than the person who drew it.
+
+A common working set is a vector PDF with embedded fonts, a 300-dpi PNG preview and, where the venue wants a raster file for line art, a 600-dpi LZW-compressed TIFF, all on a white background. At a width of 7 in the raster files are 2,100 and 4,200 pixels wide. Match the requested format, physical dimensions and resolution to the venue's instructions. Photographs and other empirical images keep their original resolution and provenance.

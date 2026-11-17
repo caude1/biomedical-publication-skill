@@ -1,0 +1,8 @@
+subgroup_heading,subgroup,events_exposed,total_exposed,events_unexposed,total_unexposed,odds_ratio,ci_lower,ci_upper
+Overall,All patients,212,1480,171,1520,1.32,1.06,1.64
+Age,Younger than 65 years,88,760,79,790,1.18,0.86,1.63
+Age,65 years or older,124,720,92,730,1.44,1.08,1.93
+Sex,Women,97,700,84,735,1.25,0.91,1.71
+Sex,Men,115,780,87,785,1.39,1.03,1.87
+Diabetes,No,131,1010,115,1050,1.21,0.93,1.58
+Diabetes,Yes,81,470,56,470,1.54,1.06,2.23

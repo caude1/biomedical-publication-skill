@@ -36,7 +36,20 @@ codex plugin marketplace add caude1/biomedical-publication-skill
 codex plugin add biomedical-publication-suite@biomedical-publication-suite
 ```
 
-Start a new session or thread after installing so the agent loads the skill. To get a later version, update the marketplace in the same tool (`/plugin marketplace update` in Claude Code, `codex plugin marketplace upgrade` in Codex) and reinstall the plugin.
+Start a new session or thread after installing so the agent loads the skill.
+
+### Getting updates
+
+- **Claude Code** can update the skill on its own. Type `/plugin`, open **Marketplaces**, select `biomedical-publication-suite` and choose **Enable auto-update**. Claude Code then checks for a new version shortly after each session starts and loads it the next time it starts. To update by hand instead, run `/plugin marketplace update biomedical-publication-suite`.
+- **Codex** has no automatic option. Run this now and then; it updates the installed copy in place:
+
+  ```bash
+  codex plugin marketplace upgrade biomedical-publication-suite
+  ```
+
+- **Zip installs** do not update. Download the zip from the [latest release](https://github.com/caude1/biomedical-publication-skill/releases/latest) again and replace the folder.
+
+Each release is listed on the [releases page](https://github.com/caude1/biomedical-publication-skill/releases) with a short note on what changed.
 
 ### Without a plugin system
 
@@ -334,6 +347,10 @@ The plugin catalog that Claude Code reads.
     .github/workflows/tests.yml
 
 Runs the helper unit tests and the package integrity check on every push.
+
+    .github/workflows/release.yml
+
+Publishes a release with the zip whenever a new version reaches `main`.
 
 Version history is in [CHANGELOG.md](plugins/biomedical-publication-suite/CHANGELOG.md).
 

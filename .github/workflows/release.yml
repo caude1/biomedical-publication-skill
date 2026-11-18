@@ -1,0 +1,48 @@
+# In the public repository: when main carries a version that has no release
+# yet, publish one with the skill as a zip. Does nothing in the private copy.
+name: release
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  release:
+    if: github.repository == 'caude1/biomedical-publication-skill'
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ github.token }}
+      PLUGIN: plugins/biomedical-publication-suite
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Find the version
+        id: version
+        run: |
+          VERSION=$(python3 -c "import json; print(json.load(open('$PLUGIN/.codex-plugin/plugin.json'))['version'])")
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+          if gh release view "v$VERSION" >/dev/null 2>&1; then
+            echo "exists=true" >> "$GITHUB_OUTPUT"
+            echo "Release v$VERSION already exists."
+          fi
+
+      - name: Publish the release
+        if: steps.version.outputs.exists != 'true'
+        env:
+          VERSION: ${{ steps.version.outputs.version }}
+        run: |
+          python3 - "$PLUGIN/CHANGELOG.md" "$VERSION" > notes.md <<'EOF'
+          import re, sys
+          text = open(sys.argv[1], encoding="utf-8").read()
+          match = re.search(rf"^## {re.escape(sys.argv[2])}\b.*?\n\n(.*?)(?=\n## |\Z)", text, re.S | re.M)
+          print(match.group(1).strip() if match else "See CHANGELOG.md.")
+          EOF
+          cat >> notes.md <<'EOF'
+
+          **Update an existing install:** Claude Code updates on its own if auto-update is on for this marketplace; otherwise run `/plugin marketplace update biomedical-publication-suite`. In Codex, run `codex plugin marketplace upgrade biomedical-publication-suite`.
+
+          **Install without a plugin system:** unzip `biomedical-publication-suite.zip` below into your agent's skills folder.
+          EOF
+          (cd "$PLUGIN/skills" && zip -qr "$GITHUB_WORKSPACE/biomedical-publication-suite.zip" biomedical-publication-suite -x '*/__pycache__/*' '*.DS_Store')
+          gh release create "v$VERSION" biomedical-publication-suite.zip --target "$GITHUB_SHA" --title "v$VERSION" --notes-file notes.md

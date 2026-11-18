@@ -1,6 +1,6 @@
 {
   "name": "biomedical-publication-suite",
-  "version": "1.3.3",
+  "version": "1.3.4",
   "description": "Evidence-grounded biomedical manuscript drafting, revision, literature and citation verification, statistical reporting, journal adaptation, and submission checks.",
   "author": {
     "name": "caude1"

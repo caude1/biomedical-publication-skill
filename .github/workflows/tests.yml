@@ -2,6 +2,8 @@ name: tests
 on:
   push:
   pull_request:
+permissions:
+  contents: read
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -17,3 +19,15 @@ jobs:
         run: python3 -m unittest discover -s tests
       - name: Package and link integrity
         run: python3 scripts/validate_suite.py
+
+  version:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: A changed skill has a new version
+        run: python3 .github/scripts/check_version_bump.py "${{ github.event.pull_request.base.sha || github.event.before }}"

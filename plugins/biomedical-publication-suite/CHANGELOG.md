@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.3.4 (2026-11-17)
+
+Updates now reach people who installed the plugin: each release is published automatically with a new version number, and the README explains how to receive updates in Claude Code and Codex. No change to the skill's guidance.
+
 ## 1.3.3 (2026-11-17)
 
 One-line installs from GitHub for both Claude Code and Codex, tested in each, and the right handle for calling the skill after a plugin or folder install. No change to the skill's guidance.

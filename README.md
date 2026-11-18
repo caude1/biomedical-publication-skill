@@ -20,13 +20,30 @@ Before a near-final manuscript or figure is handed over, the skill runs [cold re
 
 ## Install
 
-The skill works in Claude Code and Codex, and in any other agent that reads Agent Skills. Pick one route.
+The skill works in Claude Code and Codex, and in any other agent that reads Agent Skills. The repository is called `biomedical-publication-skill`; the plugin, the skill and every install or update command use the name `biomedical-publication-suite`.
+
+You can also paste this into Claude Code or Codex and let the agent do it:
+
+```text
+Install this plugin for all my agents, then teach me how to use it: https://github.com/caude1/biomedical-publication-skill
+```
+
+The agent will ask before running each install command. Expect a few approvals, because it downloads from GitHub and writes to your agents' settings folders.
 
 ### Claude Code
+
+Inside Claude Code:
 
 ```text
 /plugin marketplace add caude1/biomedical-publication-skill
 /plugin install biomedical-publication-suite@biomedical-publication-suite
+```
+
+Or in a terminal:
+
+```bash
+claude plugin marketplace add caude1/biomedical-publication-skill
+claude plugin install biomedical-publication-suite@biomedical-publication-suite
 ```
 
 ### Codex
@@ -51,25 +68,28 @@ Start a new session or thread after installing so the agent loads the skill.
 
 Each release is listed on the [releases page](https://github.com/caude1/biomedical-publication-skill/releases) with a short note on what changed.
 
-### Without a plugin system
+### Other agents
 
-Download `biomedical-publication-suite.zip` from the [latest release](https://github.com/caude1/biomedical-publication-skill/releases/latest) and unzip it into your agent's skills folder:
+For an agent without a plugin system, download `biomedical-publication-suite.zip` from the [latest release](https://github.com/caude1/biomedical-publication-skill/releases/latest) and unzip it into that agent's skills folder, for example `~/.gemini/skills/` for Gemini CLI. Gemini CLI can also install it directly once you are signed in to Gemini:
 
-    ~/.claude/skills/        Claude Code
-    ~/.codex/skills/         Codex
-    ~/.agents/skills/        agents that use the shared folder
-    ~/.gemini/skills/        Gemini CLI
-    .agents/skills/          one project only, shared with everyone who uses that project
+```bash
+gemini skills install https://github.com/caude1/biomedical-publication-skill.git --path plugins/biomedical-publication-suite/skills/biomedical-publication-suite
+```
+
+### Several agents on one computer
+
+Install the plugin in Claude Code and in Codex, and use a skills folder only for the other agents. Do not also put the skill in `~/.agents/skills` or `~/.claude/skills`: Codex reads `~/.agents/skills` and Claude Code reads `~/.claude/skills`, so each would load the skill twice. A copy in one project's `.agents/skills/` folder is shared with everyone who works on that project.
 
 In the Claude desktop or web app, upload the same zip as a skill in the Skills settings.
 
-With git instead of the zip:
+With git instead of the zip, clone once and copy or link the skill folder into the agent's skills folder:
 
 ```bash
 git clone https://github.com/caude1/biomedical-publication-skill.git
-mkdir -p ~/.agents/skills
-cp -R biomedical-publication-skill/plugins/biomedical-publication-suite/skills/biomedical-publication-suite ~/.agents/skills/
+cp -R biomedical-publication-skill/plugins/biomedical-publication-suite/skills/biomedical-publication-suite ~/.gemini/skills/
 ```
+
+Run `git pull` in the clone to update a linked copy; a copied folder is replaced the same way as a zip install.
 
 ### What is in the repository
 

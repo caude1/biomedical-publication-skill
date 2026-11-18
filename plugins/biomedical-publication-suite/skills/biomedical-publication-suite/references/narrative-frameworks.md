@@ -24,9 +24,11 @@ Rank findings by their bearing on the central scientific question, evidentiary s
 
 Proportionate emphasis is good editing. Do not apologize for every secondary result, recite every sensitivity analysis, or repeatedly revisit a limitation already stated. If contrary evidence does not alter the main inference, acknowledge it concisely and move on. If it does alter the inference, recalibrate the story rather than drowning the reader in hedges.
 
+Within that ranking, spend explanatory space on the questions a reader with no context would ask, not on the effort an analysis took or the doubts the team resolved along the way. A problem that consumed the analysis rarely occurs to a reader, and arguing against it in the text plants the doubt, although any step that changed the data or the analysis is still reported in the Methods. Use the space for the evidence that makes the result believable to an outsider, such as comparison outcomes, a gradient with exposure, or convergence of independent sources, reporting comparison outcomes that did not behave as predicted as prominently as those that did. For which sensitivity analyses appear, see [statistical reporting](statistical-reporting.md) and [reader clarity](reader-friction.md).
+
 ## Build cumulative reasoning
 
-Each paragraph has one scientific job and adds something the preceding paragraph made the reader ready to understand. Connect ideas through their actual relationship, not repeated “moreover” or “importantly.” A reader should be able to explain why paragraph B follows paragraph A.
+Each paragraph has one scientific job and adds something the preceding paragraph made the reader ready to understand. Connect ideas through their actual relationship. A connective that names it (“For example,” “As expected,” “Moreover,” “By contrast,”) helps the reader; two sentences left side by side without a link, or one connective repeated until it becomes a habit, do not. A reader should be able to explain why paragraph B follows paragraph A, and why each sentence follows the one before. A framework that motivates the study should run through the paper, from the reason for the design to the organization of methods and tables and the closing interpretation, rather than appear in a few isolated sentences.
 
 Within paragraphs, move from a precise point to the evidence or reasoning needed for that point, then advance the argument. Do not force a topic/evidence/restate pattern on every paragraph. Delete ending sentences that merely repeat the opening, background already established, Results re-listed in Discussion without interpretation, generic praise and boilerplate future-work claims. Stable technical terms should repeat when necessary; ideas should not repeat without a new purpose.
 
@@ -38,7 +40,7 @@ For a requested narrative audit, return external-facing **Scientific Narrative**
 
 Find the clearest supported answer; remove empty throat-clearing and unsupported importance adjectives. Report estimates directly without erasing imprecision. Explain clinical or mechanistic meaning only through a defensible evidence bridge. Explicitly hypothetical mechanisms remain hypothetical.
 
-Name specific limitations and the inference they threaten. State bias direction only when justified; 'direction uncertain' may be correct. Keep limitations near claims when necessary, including the abstract. A limitations section cannot repair an overstated conclusion.
+Name specific limitations and the inference they threaten. State bias direction only when justified; 'direction uncertain' may be correct. A bias whose direction is established toward the null is handled as [statistical reporting](statistical-reporting.md) describes. When the evidence supports a positive reading of an apparent weakness, present that reading with the evidence; an unexpected pattern can also signal contamination or confounding, so show what distinguishes the two readings. Keep a limitation beside a claim, including in the abstract, only when the claim would otherwise mislead. A limitations section cannot repair an overstated conclusion, and caution the evidence does not require is not rigor. Make the argument as strong as the evidence allows.
 
 ## Grant or project narrative
 

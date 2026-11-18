@@ -35,6 +35,9 @@ Read the families that fit the artifact first. The specimens are illustrations; 
 - *Content-free evaluation.* "This is a noteworthy finding." with nothing after it. Keep it only if a "because" with real content follows.
 - *Colon reveal and narrator summary.* "The pattern was consistent: deaths rose only where…", "Two results stand out." State the result as a sentence with its subject and verb. A colon before a list or a definition is ordinary punctuation.
 - *Retroactive significance and false concession.* "Despite these limitations, our findings provide important insights", "While X is impressive, Y remains a challenge". Keep both claims if both are real; do not let a formula pick a side for the author.
+- *Announce, then enumerate.* "Two intervals matter after referral: …", "Two findings suggest both steps matter." The sentence counts what is coming instead of saying it. Write the first finding as a sentence and let the second follow from it.
+- *Tagline sentence.* A short declarative that labels instead of stating: "Booking is the weak step.", "Staffing is the likely link.", "Three findings moved together." Say what was measured and how the findings relate, with the numbers that show it.
+- *Coined term or recurring metaphor.* A name the paper invents for its own concept ("the two clocks") or an image used as a mechanism ("along this path"). Use the conventional term, which may itself be figurative ("tracer condition" is established in health services research); a figurative phrase can explain a concept once, in the Discussion, if it earns its place.
 
 **Introduction** (encyclopedic defaults):
 
@@ -53,6 +56,8 @@ Read the families that fit the artifact first. The specimens are illustrations; 
 - *Unresolved comparisons and scope.* "The association was just as strong" (as what?), "38% of older patients" (of all older patients, or of those treated?), a modifier that seems to apply to one group when it applies to all, a sentence in which the reader cannot tell prior studies from the present one. Name the comparator, the denominator and whose result it is.
 - *Undefined working terms.* A phrase the argument leans on ("timely treatment", "guideline-concordant care") that is never pinned to what was measured.
 - *Ornamental adverbs.* "markedly", "remarkably", "significantly" without a test. Delete one and see whether information is lost. "approximately", "consistently" and "differed significantly (P = .003)" carry information.
+- *One construction on repeat.* "To test whether…, we…" three times in a paragraph, two consecutive sentences opening with "Because", ", so" as the default joint between clauses. Each is fine once; vary the construction when it recurs.
+- *Bullet points in paragraph form.* Sentences that each state one fact, in an order that could be shuffled, with no relation named between them. Rebuild the paragraph around how the facts connect.
 
 **Limitations:** the listicle in disguise ("The first limitation… The second limitation… The third…"), boilerplate threats with no named direction, and a closing "Despite these limitations" pivot.
 
@@ -64,7 +69,7 @@ Read the families that fit the artifact first. The specimens are illustrations; 
 
 These are field conventions or the author's voice, not tics:
 
-- Discourse markers with a job: "Notably,", "Importantly,", "Interestingly,", "In addition,", "Thus,", "In agreement with previous reports". Judge the sentence they open, not the marker. When a transition does go, restore the logical link (a connective, an echoed noun, a relation-naming conjunction); never leave two sentences sitting side by side with no link.
+- Discourse markers with a job: "Notably,", "Importantly,", "Interestingly,", "In addition,", "Moreover,", "Furthermore,", "For example,", "As expected,", "Consistent with this,", "Specifically,", "Thus,", "In agreement with previous reports". Judge the sentence they open, not the marker. Phrases that state how ideas relate help a reader, and adding one where the relation is only implicit is often the right edit. When a transition does go, restore the logical link (a connective, an echoed noun, a relation-naming conjunction); never leave two sentences sitting side by side with no link.
 - Literal terms: robust standard errors, pivotal trial, mutational landscape, unmeasured confounder, key secondary end point, leverage points.
 - Real lists of three: outcomes, covariates, sites, groups.
 - Short declarative sentences in Methods and Results, passive voice where the procedure carries focus, nominal headings, and title case where the house style uses it.

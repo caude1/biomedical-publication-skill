@@ -31,6 +31,7 @@ Give at least two readers different assignments, and three or four for a full ma
 | Journal editor or outside specialist | Explain the contribution to the intended readership, where the reasoning becomes difficult to follow, and which paragraph or panel earns less space than it receives. |
 | Register reader | With the [prose register](prose-register.md) guide in hand, mark sentences that perform (a reveal, an aphorism, a narrator's summary), run loose, or carry too many contrasts to parse, and any that sound unlike the journal. Quote each one and say what it should state instead. |
 | Newcomer after a revision | Read the current version only. Mark every phrase that leans on an earlier version, an abandoned analysis or a discussion the reader never saw. |
+| First-time clinical reader | Read as a clinician who knows the field but not this project or, for a methods-heavy paper, this method. Mark each place where you stopped to ask what a phrase means, why the authors did something, or what a term refers to; each number or rule that looks arbitrary; and each sentence that defends against a concern you would not have had. A procedural statement this reader flags is confirmed by the methods reader before any cut. See [reader clarity](reader-friction.md). |
 | Reader of a supplement, response, or handoff | Try to complete the intended task, such as locating a sensitivity result, verifying a claimed revision, or understanding what decision a coauthor needs to make. |
 
 Use a short assignment such as the following, adapted to the artifact.

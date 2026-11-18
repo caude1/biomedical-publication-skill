@@ -24,11 +24,15 @@ Begin with the question a reader should be able to answer from the figure, and h
 
 Consider what the reader sees first. Give the main comparison enough space and contrast. Direct labels can save a trip to a legend, while a shared key can clear space in a crowded panel. If readers must subtract two curves to see the central contrast, a directly estimated difference with uncertainty may earn its own panel. If a table already communicates a small set of results clearly, a second display may add little.
 
+Give each figure one job. A figure that shows how groups were defined shows what defines them; validation, stability, and reproducibility belong in the text or a table. A small table of a few numbers rarely earns a figure, and two figures that answer the same question should become one. Every display choice needs a reason a reader would accept, among them the measure plotted, the chart form, offsets between groups, end labels, and whether panels sit side by side or stacked. Weigh the alternatives for this figure and tell the author why one was chosen.
+
 When asked to choose a layout or add information such as P values, consider the tradeoff for this particular figure and recommend one option. For a venue-specific choice, distinguish published examples from verified submission requirements.
 
 ## Tables
 
 The main table should let the reader see the cohort and the contrast the paper is about; add a column or a second main table when it carries a result the argument depends on, not for completeness. In a baseline table of a randomized trial, significance tests of baseline differences are discouraged (CONSORT); in observational comparisons, standardized differences or P values follow the journal's custom, and the choice should be stated to the author as a recommendation. Footnotes define abbreviations and anything a reader cannot infer; they do not narrate methods.
+
+Lay a table out for reading. Use horizontal rules only, at the top, under the column heads and at the bottom. Put each group size under its bold group name in the header, indent subcategories under their variable, and right-align numbers so the digits line up under a centered head. Make columns wide enough that numbers do not wrap, keep range punctuation consistent with the journal, and give every measure its unit. Order rows by the framework or logic the paper uses, and when the paper defines groups, mark with footnote letters the variables that defined them. Whether to add tests of differences between groups depends on the design and the journal; recommend one option.
 
 ## Supplement economy
 
@@ -38,6 +42,6 @@ Leanness never removes evidence that changes the inference. Keep material contra
 
 ## Missing facts and sensitive content
 
-Omit optional unsupported details. For a provisional draft, use an essential visible blank only when it helps the author complete the artifact, and explain the gap outside publication prose. Submission artifacts cannot retain unresolved blanks or unsupported declarations.
+Omit optional unsupported details. For a provisional draft, use an essential visible blank only when it helps the author complete the artifact, and explain the gap outside publication prose. Submission artifacts cannot retain unresolved blanks or unsupported declarations. When the authors confirm that an optional detail is unavailable, leave it out without a placeholder or a hint, and list the omission for them. When the detail is one a reader needs to interpret a result, such as how an outcome was ascertained, say in a clause that it was not recorded. A reporting-checklist item left incomplete is marked as not available, with the reason, on the checklist itself. Administrative statements the authors already approved, such as ethics approval, contributions, and funding, are reused unless the authors say something changed, adapted to the elements the new journal requires and rechecked when the authors, funding, or scope change.
 
 Check direct and indirect patient identifiers, especially rare cases and images. Do not invent dates to de-identify an account. Generalize only when scientifically appropriate and flag any effect on interpretation. Supplied consent or author statements do not authorize arbitrary external uploads. See [evidence control](evidence-and-claim-control.md).

@@ -333,6 +333,56 @@
         "The new panel matches the typeface, palette, group encodings and layout of the existing figures. House-style colors and type are not imposed.",
         "Each group keeps the color, marker and order it has in the other figures."
       ]
+    },
+    {
+      "id": "reader-friction-methods-for-clinicians",
+      "prompt": "Revise this Methods paragraph for a clinical journal whose readers rarely use machine learning: 'Each domain comprises constructs, and the feature of a construct is the one variable that enters the domain's model; the construct's other variables are its alternatives. Variables missing for more than 25% of referrals were excluded, the strictest threshold that kept the staffing measure. Gradient-boosted trees were fitted with code written for this study, which was validated against an established package. We capitalize the names of the clusters.' The study notes say thresholds from 25% to 35% selected the same variables and every clinic kept staffing, attendance and travel-time measures at 25%.",
+      "expectations": [
+        "The revision says what was measured and why before naming any abstraction, and drops or defines the domain/construct/alternative taxonomy in plain terms.",
+        "The threshold is stated by its principle (every clinic kept the needed measures) with the supported range, not by the variable it preserved.",
+        "The capitalization sentence leaves the text. The custom-code fact is not silently deleted: the software actually used stays named (or is flagged as missing), and the agent recommends a refit with an established, cited package to the author outside the text, without inventing a package name, version, or validation result.",
+        "The prose uses the serial comma, no contractions, and no possessive apostrophes."
+      ]
+    },
+    {
+      "id": "confirmatory-robustness-stays-in-reserve",
+      "prompt": "Tighten this abstract Results passage for a clinical journal: 'Low staffing was associated with missed follow-up visits (adjusted OR 1.42, 95% CI 1.12 to 1.80). The association persisted across 412 alternative specifications (median OR 1.38), in 12 sensitivity analyses, and after adjustment for travel time (OR 1.35, 95% CI 1.06 to 1.73).' The specification results all exceeded 1.",
+      "expectations": [
+        "The primary estimate and the travel-time adjustment, the analysis that answers the obvious alternative, remain accurate.",
+        "The count of specifications, their median, and the count of sensitivity analyses leave the abstract, with a note on where that work goes: a brief supplement sentence, which is required if a plan or reporting guideline names the analyses, or reserve for reviewers otherwise.",
+        "The agent states that a robustness result that weakened the association would have to change the claim rather than be held back.",
+        "No hedge, limitation sentence, or new number is added."
+      ]
+    },
+    {
+      "id": "defensive-asides-and-conservative-bias",
+      "prompt": "Revise this Discussion paragraph and tell me what you moved: 'Low staffing was associated with more missed visits (OR 1.42), although residual confounding cannot be excluded. This estimate may be affected by misclassification of staffing periods, which were assigned from monthly rosters without reference to attendance. The association persisted after adjustment for travel time, although distance from home may not reflect travel on the day of the visit. These findings, while preliminary, suggest that staffing deserves attention.'",
+      "expectations": [
+        "Scattered caveats leave the interpretive paragraph; the ones that bound the inference move to a lean Limitations passage, each stated plainly with its consequence.",
+        "The roster misclassification, assigned without reference to attendance, is presented where the result is interpreted as unlikely to explain the association (and possibly understating it), with the condition that makes that direction hold, not as proof that the estimate is conservative.",
+        "The paragraph states the finding and its implication with the numbers, without 'while preliminary' or other reflexive hedges, and without inventing a mechanism.",
+        "The report to the author lists what moved where."
+      ]
+    },
+    {
+      "id": "same-registry-and-comparator-clarity",
+      "prompt": "Edit for clarity: 'In the present cohort, portal patients booked less often, but those who booked attended just as much. An earlier analysis of this registry found lower booking among adults older than 75 years. Travel times were similar (median 24 minutes in each group; 61% and 60% within 30 minutes).' The registry study of older adults was published by another team; this paper reports 80% vs 70% attendance among booked patients.",
+      "expectations": [
+        "The other team's work is named as a separate study of the same registry, and nothing reads as the present analysis or an earlier attempt by the authors.",
+        "'Just as much' is replaced by an explicit comparison with its comparator and numbers, and the supplied 80% vs 70% is reported correctly rather than as equality.",
+        "Travel times are described as nearly identical with the numbers, matching the strength of the evidence.",
+        "No unsupported fact or citation is added."
+      ]
+    },
+    {
+      "id": "arbitrary-numbers-need-recorded-reasons",
+      "prompt": "A coauthor says our Methods choices look arbitrary: 'We studied 30 clinics from 2015 to 2024 and grouped patients within 25 km of a clinic.' Make the paragraph convincing. The protocol says the 30 clinics are all those that accept direct referrals and that 2015 is when the system began recording the contact channel. It gives no reason for 25 km.",
+      "expectations": [
+        "The clinic count and the study period carry the reasons recorded in the protocol, each in a clause.",
+        "The agent does not invent a rationale for 25 km; it flags the missing reason for the author, offers to find literature (to be worded as precedent, not as the original reason) or a principled alternative, and keeps any placeholder out of clean text or clearly labeled.",
+        "The justification is written as design logic without claiming the choices were prespecified beyond what the protocol shows.",
+        "The added explanation is brief, a clause per choice rather than new paragraphs."
+      ]
     }
   ]
 }

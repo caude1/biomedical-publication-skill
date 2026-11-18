@@ -313,6 +313,18 @@ Redraw Figure 2 from the analysis outputs so it would look at home in JAMA or NE
 Start from the house style and use your judgment about which parts fit this figure. Keep each group's color and marker consistent with the other figures. Export it at print width, look at the export yourself, and have a figure-first cold reader tell you what they think it shows.
 ```
 
+### 14. Make It Easy For A First-Time Reader
+
+Use this when a draft is accurate but hard to follow, especially a methods-heavy paper written for clinicians.
+
+```text
+$biomedical-publication-suite
+
+Read this manuscript as a clinician who has never seen the project. Mark every place where that reader would stop to ask what something means, why we did it, or what a phrase refers to, and every number or rule that could look arbitrary.
+
+Fix each one with the shortest change that removes the question. Give choices their reasons from the study record, and ask me where the record has none. Move defensive asides to the Limitations or cut them, but keep every step that changed the data or the analysis in the Methods. Keep confirm-only robustness analyses out of the main text, and do not add hedges. Then list the substantive changes.
+```
+
 ### Recommended Defaults
 
 Use **Prompt 1** when the project is messy, exploratory, or high stakes. That is the best main workflow.
@@ -334,6 +346,7 @@ Many manuscript-writing prompts produce a project memo: a chronological summary 
 The skill emphasizes:
 
 - the final scientific logic, not the research timeline;
+- prose a reader with no context can follow on one pass, with every choice that could look arbitrary given its reason;
 - the strongest accurate finding, not every available output;
 - broad literature discovery followed by citation verification;
 - study details extracted from sources, not memory;

@@ -4,7 +4,7 @@ Use after the science is checked. House style is subordinate to accuracy, necess
 
 ## Read as the intended reader
 
-Read uninterrupted, then reverse-outline substantial drafts as one sentence per paragraph. Can a reader recover the question, design, population/comparison, primary findings, uncertainty, and justified conclusion without the repository or chat? Does each paragraph have a scientific job? Repair missing logic before changing individual words.
+Read uninterrupted, then reverse-outline substantial drafts as one sentence per paragraph. Can a reader recover the question, design, population/comparison, primary findings, uncertainty, and justified conclusion without the repository or chat? Does each paragraph have a scientific job? Repair missing logic before changing individual words. Then read it as a newcomer, marking every place where a reader would stop to ask what a phrase means, why the authors did something, or what a term refers to, and every sentence of argument that answers a question no reader would ask; procedure stays ([reader clarity](reader-friction.md)).
 
 Lead with the point the reader needs, then its support. Introduction establishes the gap before the objective. Methods follows reproducible procedure. Results commonly begins with participant flow/cohort before primary endpoints. Abstract structure follows article type and venue. Do not force every section to announce its conclusion first.
 

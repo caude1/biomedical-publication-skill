@@ -15,6 +15,7 @@ The wording of an effect is a scientific choice, and the same estimate can read 
 - **Percent versus percentage points.** A change from 12% to 18% is 6 percentage points, or a 50% relative increase. Say which.
 - **Say which direction and against what.** Name the reference group and the unit of a continuous exposure ("per 10 mm Hg", "per 1-SD increase").
 - **Retire the phrases that stand in for a result:** "trend toward significance", "marginally significant", "highly significant", "borderline". Report the estimate and interval and let them speak.
+- **Use a scale the reader can weigh.** A conditional odds ratio from a mixed or random-effects model can be far from the contrast between groups in the population, and a value such as 0.006 gives no sense of size. When the analysis provides model-estimated means, probabilities, or differences on the outcome scale (points on the outcome measure, percentages), report them, or ask for them; never convert by hand. Give the model's own effect measure where the analysis plan or the reader needs it, in the main text or the supplement. Inverting a ratio does not solve a problem of scale.
 
 ## Numbers and statistics
 
@@ -23,6 +24,9 @@ The wording of an effect is a scientific choice, and the same estimate can read 
 - Use "to" in intervals that include negative values ("−4.3 to 0.9") so a hyphen is not mistaken for a minus sign.
 - State whether a spread is an SD, SE, IQR or range; a bare "±" is ambiguous. Give an IQR as its two quartiles. Choose mean (SD) or median (IQR) by the distribution, and use the same choice for the same variable throughout.
 - Keep the number of decimals consistent within a measure and no finer than the measurement.
+- Say what each P value tests when it is not a simple comparison with the reference group: "P for difference", "P for trend", "P for interaction".
+- Report every level of a graded comparison with its interval, not only the levels that reached significance.
+- Give a number that could look arbitrary its origin where it first appears: the derivation of a cutoff, the reason for a study period, the rule that produced a count ("the 30 clinics that accept direct referrals").
 - Recast a sentence so that it does not open with a numeral.
 
 ## Units and measurement
@@ -30,6 +34,7 @@ The wording of an effect is a scientific choice, and the same estimate can read 
 - Use SI or conventional units as the journal requires; if both are needed, give the conversion once.
 - Doses carry amount, unit, route and frequency. Centrifugation is reported in × g, concentrations in mol/L or a defined unit, temperatures in °C.
 - Ages and durations carry units ("aged 65 years or older"); dates are unambiguous.
+- Every laboratory and physical measure carries its unit in tables as well as text, including biomarkers whose units a reader might guess.
 
 ## Names
 
@@ -41,6 +46,8 @@ The wording of an effect is a scientific choice, and the same estimate can read 
 - **Trials and cohorts:** registry identifier where one exists; acronyms expanded at first use.
 - **Abbreviations:** define at first use in the abstract and again in the main text. Do not abbreviate a term used only a few times, and do not coin abbreviations for the paper. Standard units need no definition.
 - **Measured outcomes keep their measured names.** A framing term may explain a concept in the Introduction or Discussion ("time-sensitive conditions"), while the outcome is still called what was measured ("out-of-hospital cardiac arrest").
+- **Derived groups** (clusters, classes, trajectories, phenotypes) get short, parallel, descriptive names ("Early", "Delayed", and "Lost" for booking trajectories) rather than letters or long or generic labels. The names should not imply more than the defining variables show. Say how the meaning of each group was assigned, and say when the names are relative to the cohort.
+- **Dichotomized outcomes** keep their definition visible wherever the outcome could be misread ("attended, that is, arrived for the booked visit within 30 days of referral").
 
 ## People
 
@@ -49,6 +56,13 @@ The wording of an effect is a scientific choice, and the same estimate can read 
 - **Race and ethnicity:** say how the categories were determined and by whom, and why they were collected. Use specific categories, capitalize them, avoid a collapsed "other" where the data allow, and never treat race as a proxy for genetics or biology. Ancestry is not race.
 - **Age:** give ranges; "older adults", not "the elderly".
 - **Case descriptions:** include only the detail the clinical point requires, and check for indirect identifiers.
+
+## Punctuation, apostrophes, and quotation
+
+- Use the serial comma in every list of three or more, including lists inside parentheses, figure text, table notes, and letters ("portal, telephone, and letter"), unless the journal style omits it. A reference style that fixes the punctuation of author lists is also an exception.
+- Write without contractions. By default, avoid possessive apostrophes too, for people and for things, rephrasing without building chains of "of": "scores for each patient", "the model estimate", "Cohen κ". AMA style itself requires only nonpossessive eponyms; this is a house default the author can relax.
+- Paraphrase other papers rather than quoting them. Reserve direct quotation for wording that must be exact, such as a definition, an item of an instrument, or a regulation, and verify the quotation against the source.
+- Manuscript text is written in paragraphs. Bullet points belong to letters, summaries, and supplements where the venue uses them.
 
 ## Tense and person
 

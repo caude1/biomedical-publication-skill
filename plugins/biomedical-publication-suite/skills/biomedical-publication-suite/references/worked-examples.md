@@ -88,9 +88,75 @@ The first version stages a reveal with a colon and closes on an aphorism. The se
 
 **Draft.** “This study has several limitations. First, its retrospective design is subject to bias. Second, residual confounding cannot be excluded. Third, the findings may not be generalizable. Fourth, some data were missing. Despite these limitations, our findings provide important insights.”
 
-**Revision.** “Two limitations bear on the comparison. Staff chose the contact channel, and the records do not show why. If staff telephoned the patients they expected to have difficulty booking online, the groups differed before contact in ways these data cannot describe. In addition, most patients in this health system already had a portal account, and the results may not apply where portal use is uncommon.”
+**Revision.** “Staff chose the contact channel, and the records do not show why. If staff telephoned the patients they expected to have difficulty booking online, the groups differed before contact in ways these data cannot describe. In addition, most patients in this health system already had a portal account, and the results may not apply where portal use is uncommon.”
 
 Name the limitations that could change the inference, each with its consequence for this study. The generic threats, the numbered list and the closing pivot add nothing a reader can use. The draft's fourth item is also untrue here, because follow-up was complete. Smaller concerns can wait until a reviewer raises them.
+
+## A choice stated by its principle
+
+**Source.** Records from 30 clinics were screened for missing data before modeling. The analysis plan set the rule: use the strictest missingness threshold at which every clinic keeps the measures the analysis needs. At 20%, the staffing measure was excluded for 4 clinics. At each threshold tested from 25% to 35%, every clinic retained staffing, attendance, and travel time, and the same variables were selected.
+
+**Draft.** “We used a 25% threshold, the strictest that kept the staffing measure.”
+
+**Revision.** “Variables missing for more than 25% of referrals were excluded. This was the strictest threshold at which every clinic retained measures of staffing, attendance, and travel time, and each threshold tested from 25% to 35% selected the same variables.”
+
+The draft reads as a threshold tuned to rescue one variable. The revision states the rule the authors recorded, a principle that does not depend on the outcome results, and shows that the choice did not matter within the range tested. Had the record given only the narrower reason, keeping the exposure measure for every clinic, that reason is legitimate too and would be stated as it is, not widened.
+
+## A study of the same registry
+
+**Source.** Another team analyzed the same referral registry and reported lower booking among adults older than 75 years.
+
+**Draft.** “An earlier analysis of this registry found lower booking among adults older than 75 years.”
+
+**Revision.** “A separate study of the same referral registry found lower booking among adults older than 75 years.”
+
+“An earlier analysis of this registry” reads as an earlier attempt by these authors, and “in this cohort” would read as the present analysis. Name the other work as separate every time it appears.
+
+## A defensive aside
+
+**Draft (Statistical Analysis, mid-paragraph).** “All available records were used, which is valid when missingness depends only on observed data; no values were imputed.”
+
+**Revision.** “Models used all available records without imputation (full-information maximum likelihood, which assumes that missingness depends only on observed variables).”
+
+The procedure and its assumption stay, as one statement of what was done. What goes is the tone of a defense (“which is valid when”). If there is a specific reason to doubt the assumption in this study, give it one sentence in the Limitations with its consequence.
+
+## A comparison the argument depends on
+
+**Source.** Median travel time was 24 minutes in both groups (IQR, 15-38 and 16-37 minutes), and 61% and 60% of patients lived within 30 minutes of the clinic.
+
+**Draft.** “The two groups had similar travel times.”
+
+**Revision.** “Travel times were nearly identical in the two groups (median, 24 minutes in each; 61% and 60% within 30 minutes).”
+
+The argument rests on travel not differing between the groups, so “similar” understates the evidence. Use the strongest wording the numbers support and put the numbers beside it. This applies to a descriptive comparison; for an outcome, the estimate and its interval decide, which is why the conclusion below calls 40% and 42% attendance similar.
+
+## Robustness in the abstract
+
+**Source.** In the staffing cohort, the association was refitted with 412 combinations of adjustment sets and staffing cutoffs. The odds ratio exceeded 1 in all of them, with a median of 1.38. The prespecified adjustment for travel time gave 1.35 (95% CI 1.06 to 1.73).
+
+**Draft (abstract).** “The association persisted across 412 alternative specifications (median OR 1.38).”
+
+**Revision.** Remove the sentence from the abstract. If the Results need a robustness statement, report the analysis that answers the obvious alternative: “The association persisted after adjustment for travel time (OR 1.35, 95% CI 1.06 to 1.73).” The 412 specifications go in one supplement sentence, or, if no plan or reporting guideline calls for them, can be held for reviewers.
+
+A clinical reader takes a count of specifications as a sign of a search for significance, even when the search confirms the result. The single analysis that addresses travel, the alternative a reader would raise, carries more. If some specifications had reversed the association, that would change the claim and could not be held back.
+
+## A Discussion opening that orients the reader
+
+**Draft.** “This study examined referral and attendance. Several patterns emerged.”
+
+**Revision.** “In the records of 350 adults referred for outpatient rehabilitation, those first contacted by portal were less likely than those contacted by telephone to book a visit within 14 days (50% vs 60%) but more likely to attend once booked (80% vs 70%), so a similar proportion of each group attended a visit (40% and 42%). The two contact channels lost patients at different steps, and a comparison limited to booked patients would have favored the portal.”
+
+A reader who starts at the Discussion learns the design, the population, the comparison, the few numbers the argument rests on, and what they mean. The draft makes that reader return to the Results.
+
+## A bias that makes the estimate conservative
+
+**Source.** Staffing periods were assigned from monthly rosters, so referrals in a month with a midmonth staffing change could be assigned the wrong period. The assignment was made without reference to attendance.
+
+**Draft (Limitations).** “Staffing periods may have been misclassified.”
+
+**Revision (Discussion, where the staffing result is interpreted).** “Because staffing periods were assigned from monthly rosters without reference to attendance, any misclassification would be expected to bias the association toward the null, so it is unlikely to explain the association and may understate its size.”
+
+Nondifferential misclassification of a binary exposure weakens an association in expectation, so here it argues against misclassification as an explanation of the finding rather than casting doubt on it. Make this argument only when the direction is established, and never for a null or equivalence conclusion, which attenuation would favor. If the misclassification could depend on the outcome, the direction is uncertain and the point belongs in the Limitations.
 
 ## A conclusion that stands alone
 

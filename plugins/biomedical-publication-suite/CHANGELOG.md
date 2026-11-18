@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.3.3 (2026-11-17)
+
+One-line installs from GitHub for both Claude Code and Codex, tested in each, and the right handle for calling the skill after a plugin or folder install. No change to the skill's guidance.
+
 ## 1.3.2 (2026-11-17)
 
 Released under the MIT License. The license text is at the repository root and in the skill folder.

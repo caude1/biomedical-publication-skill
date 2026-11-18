@@ -2,9 +2,27 @@
 
 A publication assistant centered on scientific reasoning and editorial judgment. It helps turn study evidence into a paper written for an outside reader, with a coherent final rationale, direct findings, and deliberately placed limitations.
 
+## Install
+
+In Claude Code:
+
+```text
+/plugin marketplace add caude1/biomedical-publication-skill
+/plugin install biomedical-publication-suite@biomedical-publication-suite
+```
+
+In Codex:
+
+```bash
+codex plugin marketplace add caude1/biomedical-publication-skill
+codex plugin add biomedical-publication-suite@biomedical-publication-suite
+```
+
+For other agents, unzip `biomedical-publication-suite.zip` from the [latest release](https://github.com/caude1/biomedical-publication-skill/releases/latest) into the agent's skills folder.
+
 ## Use it
 
-Invoke `$biomedical-publication-suite` with the manuscript, study folder, results, references or reviewer comments relevant to your request. It adapts to a paragraph edit, a full manuscript, a review or submission preparation. It does not require a scaffold, script run, citation quota or fixed iteration count.
+Invoke it as `$biomedical-publication-suite` in Codex, or in Claude Code as `/biomedical-publication-suite:biomedical-publication-suite` after a plugin install or `/biomedical-publication-suite` after a folder install, with the manuscript, study folder, results, references or reviewer comments relevant to your request. It adapts to a paragraph edit, a full manuscript, a review or submission preparation. It does not require a scaffold, script run, citation quota or fixed iteration count.
 
 Useful requests:
 

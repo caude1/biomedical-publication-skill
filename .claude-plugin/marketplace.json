@@ -9,5 +9,8 @@
       "source": "./plugins/biomedical-publication-suite",
       "description": "Evidence-grounded biomedical manuscript drafting, revision, literature and citation verification, statistical reporting, journal adaptation, and submission checks."
     }
-  ]
+  ],
+  "metadata": {
+    "description": "Biomedical manuscript writing and review: narrative, scientific prose, figures, citations, journal adaptation and reviewer responses."
+  }
 }

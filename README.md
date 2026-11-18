@@ -18,28 +18,39 @@ Before a near-final manuscript or figure is handed over, the skill runs [cold re
 - Adapt a manuscript for a target journal or article type.
 - Keep author notes and unresolved checks separate from text meant for submission.
 
-## Install As An Agent Skill
+## Install
 
-The portable skill lives here:
+The skill works in Claude Code and Codex, and in any other agent that reads Agent Skills. Pick one route.
 
-    plugins/biomedical-publication-suite/skills/biomedical-publication-suite
+### Claude Code
 
-Use that folder with any coding agent that supports Agent Skills or skill-style instruction folders.
+```text
+/plugin marketplace add caude1/biomedical-publication-skill
+/plugin install biomedical-publication-suite@biomedical-publication-suite
+```
 
-Common installation patterns:
+### Codex
 
-    ~/.agents/skills/biomedical-publication-suite
-    ~/.claude/skills/biomedical-publication-suite
-    ~/.gemini/skills/biomedical-publication-suite
-    .agents/skills/biomedical-publication-suite
+```bash
+codex plugin marketplace add caude1/biomedical-publication-skill
+codex plugin add biomedical-publication-suite@biomedical-publication-suite
+```
 
-For a personal install, copy or link the skill folder into one of those locations, then restart or refresh your agent's skill list.
+Start a new session or thread after installing so the agent loads the skill. To get a later version, update the marketplace in the same tool (`/plugin marketplace update` in Claude Code, `codex plugin marketplace upgrade` in Codex) and reinstall the plugin.
 
-To install without git, download `biomedical-publication-suite.zip` from the [latest release](https://github.com/caude1/biomedical-publication-skill/releases/latest) and unzip it into one of those locations. In the Claude desktop or web app, the same zip can be uploaded as a skill in the Skills settings.
+### Without a plugin system
 
-For a project install, copy the skill folder into the project's skill directory so everyone using that project gets the same manuscript-writing behavior.
+Download `biomedical-publication-suite.zip` from the [latest release](https://github.com/caude1/biomedical-publication-skill/releases/latest) and unzip it into your agent's skills folder:
 
-If your agent uses the common `~/.agents/skills` folder, this is the direct install:
+    ~/.claude/skills/        Claude Code
+    ~/.codex/skills/         Codex
+    ~/.agents/skills/        agents that use the shared folder
+    ~/.gemini/skills/        Gemini CLI
+    .agents/skills/          one project only, shared with everyone who uses that project
+
+In the Claude desktop or web app, upload the same zip as a skill in the Skills settings.
+
+With git instead of the zip:
 
 ```bash
 git clone https://github.com/caude1/biomedical-publication-skill.git
@@ -47,44 +58,24 @@ mkdir -p ~/.agents/skills
 cp -R biomedical-publication-skill/plugins/biomedical-publication-suite/skills/biomedical-publication-suite ~/.agents/skills/
 ```
 
-## Optional Plugin Package
+### What is in the repository
 
-This repository also includes a plugin package for agents that support plugin marketplace folders:
-
-    .agents/plugins/marketplace.json
-    plugins/biomedical-publication-suite/
-
-If your agent supports adding a plugin marketplace from GitHub, add this repository as the marketplace source, then install **Biomedical Publication Suite** from the plugin list.
-
-The plugin package is optional. Agents that support skills directly should use the portable skill folder instead.
-
-For Claude Code users:
-
-```text
-/plugin marketplace add caude1/biomedical-publication-skill
-/plugin install biomedical-publication-suite@biomedical-publication-suite
-```
-
-For Codex users, after cloning the repository:
-
-```bash
-codex plugin marketplace add /path/to/biomedical-publication-skill
-codex plugin add biomedical-publication-suite@biomedical-publication-suite
-```
-
-Start a new thread after installing so the agent loads the new skill.
+The skill itself is one folder, `plugins/biomedical-publication-suite/skills/biomedical-publication-suite`. The plugin wraps that same folder with a short description file for each tool (`.claude-plugin/` and `.codex-plugin/`), and the repository lists it in a catalog that each tool reads (`.claude-plugin/marketplace.json` and `.agents/plugins/marketplace.json`). The instructions, figures and helper scripts are shared; the helpers need only Python 3.10 or later.
 
 ## Prompt Library
 
 These prompts are written for the most common setup: the agent is already running inside the research directory that contains the analysis, results, figures, tables, notes, and drafts.
 
-For the first line, use whichever handle fits the agent:
+For the first line, use whichever handle fits how you installed it:
 
 ```text
-Codex: $biomedical-publication-suite
-Claude Code: /biomedical-publication-suite
-Plain fallback: Use Biomedical Publication Suite.
+Codex:                                $biomedical-publication-suite
+Claude Code, plugin install:          /biomedical-publication-suite:biomedical-publication-suite
+Claude Code, folder or zip install:   /biomedical-publication-suite
+Any agent:                            Use Biomedical Publication Suite.
 ```
+
+The agent also loads the skill on its own when a request matches what it does, so the handle is optional.
 
 ### 1. Propose The Manuscript Before Drafting
 
@@ -334,11 +325,11 @@ The portable Agent Skill. This is the folder to copy or link for agents that sup
 
     .agents/plugins/marketplace.json
 
-An optional plugin marketplace entry for agents that support marketplace-based plugin installation.
+The plugin catalog that Codex reads.
 
     .claude-plugin/marketplace.json
 
-The same marketplace entry for Claude Code.
+The plugin catalog that Claude Code reads.
 
     .github/workflows/tests.yml
 

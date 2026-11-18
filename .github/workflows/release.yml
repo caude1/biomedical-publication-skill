@@ -42,7 +42,7 @@ jobs:
 
           **Update an existing install:** Claude Code updates on its own if auto-update is on for this marketplace; otherwise run `/plugin marketplace update biomedical-publication-suite`. In Codex, run `codex plugin marketplace upgrade biomedical-publication-suite`.
 
-          **Install without a plugin system:** unzip `biomedical-publication-suite.zip` below into your agent's skills folder.
+          **Install without a plugin system:** unzip `biomedical-publication-suite.zip` below into your agent's skills folder. It holds the three skill folders.
           EOF
-          (cd "$PLUGIN/skills" && zip -qr "$GITHUB_WORKSPACE/biomedical-publication-suite.zip" biomedical-publication-suite -x '*/__pycache__/*' '*.DS_Store')
+          (cd "$PLUGIN/skills" && zip -qr "$GITHUB_WORKSPACE/biomedical-publication-suite.zip" biomedical-publication-suite senior-investigator-audit readable-scientific-code -x '*/__pycache__/*' '*.DS_Store')
           gh release create "v$VERSION" biomedical-publication-suite.zip --target "$GITHUB_SHA" --title "v$VERSION" --notes-file notes.md

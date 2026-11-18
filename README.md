@@ -2,7 +2,13 @@
 
 Turn a biomedical study folder into the paper it is trying to become.
 
-Biomedical Publication Suite is an Agent Skill for biomedical manuscript writing and publication polish. It helps a coding agent review a study folder, understand the analysis outputs, find the strongest scientific story, decide what belongs in the paper, and draft or revise publication-ready materials.
+Biomedical Publication Suite is a plugin of three Agent Skills for biomedical research:
+
+- **biomedical-publication-suite** helps a coding agent review a study folder, understand the analysis outputs, find the strongest scientific story, decide what belongs in the paper, and draft or revise publication-ready materials.
+- **senior-investigator-audit** takes over an existing research project as its senior investigator. It reproduces the analysis, verifies every reported number, repairs errors, judges each analytic choice, runs only the few new analyses that earn their place, reorganizes the repository safely, and redrafts the paper. It changes nothing in the project until you approve its recommendations.
+- **readable-scientific-code** writes and simplifies analysis code (notebooks first, then scripts where they fit) that its readers can follow, explain, and reproduce, without changing results.
+
+All three use established packages and libraries by default and write custom code only for a stated reason.
 
 It is built for real research projects with figures, tables, model outputs, notes, partial drafts, reviewer comments, journal instructions, and messy intermediate files. The goal is not to summarize everything in the folder. The goal is to help the agent write like a careful biomedical author: clear, accurate, confident where the evidence supports confidence, and honest about what still needs author review.
 
@@ -17,10 +23,13 @@ Before a near-final manuscript or figure is handed over, the skill runs [cold re
 - Improve abstracts, titles, figure legends, table text, cover letters, and reviewer responses.
 - Adapt a manuscript for a target journal or article type.
 - Keep author notes and unresolved checks separate from text meant for submission.
+- Audit a finished or half-finished project: reproduce it, check every number in the paper against the code, and fix what is wrong.
+- Find the analytic choices a reviewer could call arbitrary, and make each one principled.
+- Clean up analysis code so a collaborator can read and rerun it, using standard packages instead of hand-written helpers.
 
 ## Install
 
-The skill works in Claude Code and Codex, and in any other agent that reads Agent Skills. The repository is called `biomedical-publication-skill`; the plugin, the skill and every install or update command use the name `biomedical-publication-suite`.
+The skill works in Claude Code and Codex, and in any other agent that reads Agent Skills. The repository is called `biomedical-publication-skill`; the plugin and every install or update command use the name `biomedical-publication-suite`. One install gives you all three skills.
 
 You can also paste this into Claude Code or Codex and let the agent do it:
 
@@ -53,7 +62,19 @@ codex plugin marketplace add caude1/biomedical-publication-skill
 codex plugin add biomedical-publication-suite@biomedical-publication-suite
 ```
 
-Start a new session or thread after installing so the agent loads the skill.
+Start a new session or thread after installing so the agent loads the skills.
+
+### Calling the skills
+
+Agents usually pick the right skill from an ordinary request. To call one by name:
+
+| Skill | Codex | Claude Code |
+|---|---|---|
+| Publication suite | `$biomedical-publication-suite` | `/biomedical-publication-suite:biomedical-publication-suite` |
+| Senior investigator audit | `$senior-investigator-audit` | `/biomedical-publication-suite:senior-investigator-audit` |
+| Readable scientific code | `$readable-scientific-code` | `/biomedical-publication-suite:readable-scientific-code` |
+
+After a folder install in Claude Code, the names are shorter: `/biomedical-publication-suite`, `/senior-investigator-audit`, and `/readable-scientific-code`.
 
 ### Getting updates
 
@@ -66,34 +87,45 @@ Start a new session or thread after installing so the agent loads the skill.
 
 - **Zip installs** do not update. Download the zip from the [latest release](https://github.com/caude1/biomedical-publication-skill/releases/latest) again and replace the folder.
 
-Each release is listed on the [releases page](https://github.com/caude1/biomedical-publication-skill/releases) with a short note on what changed.
+Each release is listed on the [releases page](https://github.com/caude1/biomedical-publication-skill/releases) with a short note on what changed. About once a week, when you use one of the skills, it checks for a newer version and offers to update. After an update, the agent tells you what changed since the version you had and gives a short tutorial on using what is new. It sends nothing about you or your work; set `BPS_UPDATE_CHECK=off` to turn the weekly check off.
 
 ### Other agents
 
-For an agent without a plugin system, download `biomedical-publication-suite.zip` from the [latest release](https://github.com/caude1/biomedical-publication-skill/releases/latest) and unzip it into that agent's skills folder, for example `~/.gemini/skills/` for Gemini CLI. Gemini CLI can also install it directly once you are signed in to Gemini:
+For an agent without a plugin system, download `biomedical-publication-suite.zip` from the [latest release](https://github.com/caude1/biomedical-publication-skill/releases/latest) and unzip it into that agent's skills folder, for example `~/.gemini/skills/` for Gemini CLI. The zip holds the three skill folders. Gemini CLI can also install them directly once you are signed in to Gemini, one command per skill:
 
 ```bash
 gemini skills install https://github.com/caude1/biomedical-publication-skill.git --path plugins/biomedical-publication-suite/skills/biomedical-publication-suite
 ```
 
+```bash
+gemini skills install https://github.com/caude1/biomedical-publication-skill.git --path plugins/biomedical-publication-suite/skills/senior-investigator-audit
+```
+
+```bash
+gemini skills install https://github.com/caude1/biomedical-publication-skill.git --path plugins/biomedical-publication-suite/skills/readable-scientific-code
+```
+
 ### Several agents on one computer
 
-Install the plugin in Claude Code and in Codex, and use a skills folder only for the other agents. Do not also put the skill in `~/.agents/skills` or `~/.claude/skills`: Codex reads `~/.agents/skills` and Claude Code reads `~/.claude/skills`, so each would load the skill twice. A copy in one project's `.agents/skills/` folder is shared with everyone who works on that project.
+Install the plugin in Claude Code and in Codex, and use a skills folder only for the other agents. Do not also put the skills in `~/.agents/skills` or `~/.claude/skills`: Codex reads `~/.agents/skills` and Claude Code reads `~/.claude/skills`, so each would load the skills twice. A copy in one project's `.agents/skills/` folder is shared with everyone who works on that project.
 
 In the Claude desktop or web app, upload the same zip as a skill in the Skills settings.
 
-With git instead of the zip, clone once and copy or link the skill folder into the agent's skills folder:
+With git instead of the zip, clone once and copy or link the skill folders into the agent's skills folder:
 
 ```bash
 git clone https://github.com/caude1/biomedical-publication-skill.git
-cp -R biomedical-publication-skill/plugins/biomedical-publication-suite/skills/biomedical-publication-suite ~/.gemini/skills/
+```
+
+```bash
+cp -R biomedical-publication-skill/plugins/biomedical-publication-suite/skills/* ~/.gemini/skills/
 ```
 
 Run `git pull` in the clone to update a linked copy; a copied folder is replaced the same way as a zip install.
 
 ### What is in the repository
 
-The skill itself is one folder, `plugins/biomedical-publication-suite/skills/biomedical-publication-suite`. The plugin wraps that same folder with a short description file for each tool (`.claude-plugin/` and `.codex-plugin/`), and the repository lists it in a catalog that each tool reads (`.claude-plugin/marketplace.json` and `.agents/plugins/marketplace.json`). The instructions, figures and helper scripts are shared; the helpers need only Python 3.10 or later.
+Each skill is one folder under `plugins/biomedical-publication-suite/skills/`. The plugin wraps those folders with a short description file for each tool (`.claude-plugin/` and `.codex-plugin/`), and the repository lists it in a catalog that each tool reads (`.claude-plugin/marketplace.json` and `.agents/plugins/marketplace.json`). The instructions, figures and helper scripts are shared; the helpers need only Python 3.10 or later.
 
 ## Prompt Library
 
@@ -325,6 +357,28 @@ Read this manuscript as a clinician who has never seen the project. Mark every p
 Fix each one with the shortest change that removes the question. Give choices their reasons from the study record, and ask me where the record has none. Move defensive asides to the Limitations or cut them, but keep every step that changed the data or the analysis in the Methods. Keep confirm-only robustness analyses out of the main text, and do not add hedges. Then list the substantive changes.
 ```
 
+### 15. Audit A Research Project
+
+Use this when a project needs a senior look: an analysis built by earlier agents, a paper headed for resubmission, or results you no longer trust.
+
+```text
+$senior-investigator-audit
+
+Audit the project in this folder as its senior investigator. Reproduce the analysis, check every number in the manuscript against the code, fix what is wrong in your working copy, and judge each analytic choice, including any that a reviewer could call arbitrary.
+
+Run only the few new analyses that would change the paper. Then show me the updated narrative, what you found and fixed, and your recommendations, and change nothing in the project until I approve.
+```
+
+### 16. Readable Analysis Code
+
+Use this when code works but is hard to follow, or before you share it.
+
+```text
+$readable-scientific-code
+
+Simplify this analysis so a collaborator can follow and rerun it. Use standard packages instead of hand-written helpers, keep every choice that defines the analysis, and show me that the results are unchanged.
+```
+
 ### Recommended Defaults
 
 Use **Prompt 1** when the project is messy, exploratory, or high stakes. That is the best main workflow.
@@ -339,6 +393,8 @@ Use **Prompt 8** when the manuscript needs a stronger literature base, when you 
 
 Use **Prompt 12** before sending a draft to coauthors or a journal.
 
+Use **Prompt 15** when the analysis itself needs checking before the writing does.
+
 ## What Makes It Different
 
 Many manuscript-writing prompts produce a project memo: a chronological summary of files, decisions, caveats, and disconnected results. Biomedical Publication Suite pushes the agent toward the finished paper instead. It asks the agent to write for the reader of the manuscript, not for the person managing the project.
@@ -347,6 +403,8 @@ The skill emphasizes:
 
 - the final scientific logic, not the research timeline;
 - prose a reader with no context can follow on one pass, with every choice that could look arbitrary given its reason;
+- an audit that verifies the analysis before polishing the paper, and changes nothing until you approve;
+- established packages and libraries rather than hand-written replacements;
 - the strongest accurate finding, not every available output;
 - broad literature discovery followed by citation verification;
 - study details extracted from sources, not memory;

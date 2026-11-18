@@ -127,5 +127,95 @@ class UpdateCheckTests(unittest.TestCase):
         self.assertIn(".zip", " ".join(cu.update_instructions("folder")))
 
 
+    # After an update: what changed, once.
+    CHANGELOG = (
+        "# Changelog\n\n"
+        "## 1.6.0 (2026-11-18)\n\nSix summary.\n\n**How to use it**\n\n- Ask for six.\n\n"
+        "## 1.5.0 (2026-11-18)\n\nFive summary.\n\n"
+        "## 1.4.0 (2026-11-17)\n\nFour summary.\n\n"
+        "## 1.3.0 (2026-11-17)\n\nThree summary.\n"
+    )
+
+    def write_state(self, state):
+        self.state_file.write_text(json.dumps(state))
+
+    def test_first_use_is_silent_and_records_the_version(self):
+        _, out, _ = self.run_check(latest="1.4.0", installed="1.4.0")
+        self.assertNotIn("UPDATED", out)
+        self.assertEqual(json.loads(self.state_file.read_text())["last_seen_version"], "1.4.0")
+
+    def test_update_since_last_use_shows_the_changes_between_versions(self):
+        self.write_state({"last_seen_version": "1.4.0"})
+        with patch.object(cu, "local_changelog", return_value=self.CHANGELOG):
+            _, out, _ = self.run_check(latest="1.6.0", installed="1.6.0")
+            self.assertIn("UPDATED: version 1.6.0 is now in use (previously 1.4.0).", out)
+            self.assertIn("## 1.6.0", out)
+            self.assertIn("## 1.5.0", out)
+            self.assertIn("Ask for six.", out)
+            self.assertNotIn("## 1.4.0", out)
+            self.assertLess(out.index("## 1.6.0"), out.index("## 1.5.0"))
+            _, again, _ = self.run_check(latest="1.6.0", installed="1.6.0")
+        self.assertNotIn("UPDATED", again)
+        self.assertEqual(json.loads(self.state_file.read_text())["last_seen_version"], "1.6.0")
+
+    def test_previous_version_comes_from_an_older_state_file(self):
+        recent = datetime.now(timezone.utc).isoformat(timespec="seconds")
+        self.write_state({"installed": "1.5.0", "latest": "1.5.0", "last_checked": recent})
+        with patch.object(cu, "local_changelog", return_value=self.CHANGELOG):
+            _, out, _ = self.run_check(latest="1.6.0", installed="1.6.0")
+        self.assertIn("(previously 1.5.0)", out)
+        self.assertIn("## 1.6.0", out)
+        self.assertNotIn("## 1.5.0", out)
+
+    def test_whats_new_after_installing_is_not_repeated_on_first_use(self):
+        self.write_state({"last_seen_version": "1.5.0"})
+        out = io.StringIO()
+        with patch.object(cu, "fetch_changelog", return_value=self.CHANGELOG), \
+                patch.object(cu, "installed_version", return_value="1.5.0"), \
+                contextlib.redirect_stdout(out):
+            cu.main(["--whats-new"])
+        self.assertIn("WHAT'S NEW since 1.5.0", out.getvalue())
+        self.assertIn("Ask for six.", out.getvalue())
+        self.assertNotIn("Five summary.", out.getvalue())
+        with patch.object(cu, "local_changelog", return_value=self.CHANGELOG):
+            _, later, _ = self.run_check(latest="1.6.0", installed="1.6.0")
+        self.assertIn("UPDATED", later)
+        self.assertIn("already shown", later.replace("were shown", "already shown"))
+        self.assertNotIn("Ask for six.", later)
+
+    def test_an_older_copy_does_not_reset_the_newest_version_seen(self):
+        self.write_state({"last_seen_version": "1.6.0"})
+        _, out, _ = self.run_check(latest="1.6.0", installed="1.5.0")
+        self.assertNotIn("UPDATED", out)
+        self.assertEqual(json.loads(self.state_file.read_text())["last_seen_version"], "1.6.0")
+
+    def test_updated_notice_works_offline_with_the_check_turned_off(self):
+        self.write_state({"last_seen_version": "1.5.0"})
+        with patch.dict(os.environ, {"BPS_UPDATE_CHECK": "off"}), \
+                patch.object(cu, "local_changelog", return_value=self.CHANGELOG):
+            _, out, opened = self.run_check(latest="9.9.9", installed="1.6.0")
+        self.assertIn("UPDATED", out)
+        self.assertIn("turned off", out)
+        self.assertEqual(opened.call_count, 0)
+
+    def test_changelog_entries_respect_bounds_and_order(self):
+        entries = cu.changelog_entries(self.CHANGELOG, after="1.3.0", upto="1.5.0")
+        self.assertEqual([v for v, _ in entries], ["1.5.0", "1.4.0"])
+        self.assertEqual([v for v, _ in cu.changelog_entries(self.CHANGELOG, after="1.5.0")], ["1.6.0"])
+
+    def test_shipped_changelog_covers_the_shipped_version(self):
+        text = cu.local_changelog()
+        self.assertIsNotNone(text)
+        self.assertTrue(cu.changelog_entries(text, after="0.0.1", upto=cu.installed_version()))
+
+    def test_every_skill_carries_the_same_update_files(self):
+        skills = SCRIPT.parents[2]
+        for rel in ["scripts/check_update.py", "references/updates.md", "VERSION"]:
+            copies = {p.parent.name if rel == "VERSION" else p.parents[1].name: p.read_bytes()
+                      for p in skills.glob(f"*/{rel}")}
+            self.assertGreaterEqual(len(copies), 3, rel)
+            self.assertEqual(len(set(copies.values())), 1, rel)
+
+
 if __name__ == "__main__":
     unittest.main()

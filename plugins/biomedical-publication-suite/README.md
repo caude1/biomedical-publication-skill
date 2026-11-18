@@ -1,6 +1,12 @@
 # Biomedical Publication Suite
 
-A publication assistant centered on scientific reasoning and editorial judgment. It helps turn study evidence into a paper written for an outside reader, with a coherent final rationale, direct findings, and deliberately placed limitations.
+Three research skills in one plugin, centered on scientific reasoning and editorial judgment:
+
+- **biomedical-publication-suite** turns study evidence into a paper written for an outside reader, with a coherent final rationale, direct findings, and deliberately placed limitations.
+- **senior-investigator-audit** takes over an existing research project as its senior investigator: it reproduces and verifies the analysis, judges each analytic choice, runs only the analyses that earn their place, reorganizes the repository safely, and redrafts the paper, changing nothing until you approve.
+- **readable-scientific-code** writes and simplifies analysis code that its readers can follow and reproduce.
+
+All three use established packages and libraries by default and write custom code only for a stated reason.
 
 ## Install
 
@@ -18,13 +24,19 @@ codex plugin marketplace add caude1/biomedical-publication-skill
 codex plugin add biomedical-publication-suite@biomedical-publication-suite
 ```
 
-About once a week, when the skill is used, it checks whether a newer version is published and, if so, tells you and offers to run the update command. It sends nothing about you or your work; set `BPS_UPDATE_CHECK=off` to turn the check off. To receive updates automatically in Claude Code, type `/plugin`, open **Marketplaces**, select `biomedical-publication-suite` and choose **Enable auto-update**. In Codex, run `codex plugin marketplace upgrade biomedical-publication-suite` now and then; it updates the installed copy in place.
+About once a week, when a skill is used, it checks whether a newer version is published and, if so, tells you and offers to run the update command. After an update, it tells you what changed since your previous version and gives a short tutorial. It sends nothing about you or your work; set `BPS_UPDATE_CHECK=off` to turn the check off. To receive updates automatically in Claude Code, type `/plugin`, open **Marketplaces**, select `biomedical-publication-suite` and choose **Enable auto-update**. In Codex, run `codex plugin marketplace upgrade biomedical-publication-suite` now and then; it updates the installed copy in place.
 
-For other agents, unzip `biomedical-publication-suite.zip` from the [latest release](https://github.com/caude1/biomedical-publication-skill/releases/latest) into the agent's skills folder.
+For other agents, unzip `biomedical-publication-suite.zip` from the [latest release](https://github.com/caude1/biomedical-publication-skill/releases/latest) into the agent's skills folder; it holds all three skill folders.
 
 ## Use it
 
-Invoke it as `$biomedical-publication-suite` in Codex, or in Claude Code as `/biomedical-publication-suite:biomedical-publication-suite` after a plugin install or `/biomedical-publication-suite` after a folder install, with the manuscript, study folder, results, references or reviewer comments relevant to your request. It adapts to a paragraph edit, a full manuscript, a review or submission preparation. It does not require a scaffold, script run, citation quota or fixed iteration count.
+| Skill | Codex | Claude Code (plugin install) | Claude Code (folder install) |
+|---|---|---|---|
+| Publication suite | `$biomedical-publication-suite` | `/biomedical-publication-suite:biomedical-publication-suite` | `/biomedical-publication-suite` |
+| Senior investigator audit | `$senior-investigator-audit` | `/biomedical-publication-suite:senior-investigator-audit` | `/senior-investigator-audit` |
+| Readable scientific code | `$readable-scientific-code` | `/biomedical-publication-suite:readable-scientific-code` | `/readable-scientific-code` |
+
+Agents also pick the right skill from an ordinary request. Call the publication suite with the manuscript, study folder, results, references or reviewer comments relevant to your request. It adapts to a paragraph edit, a full manuscript, a review or submission preparation. It does not require a scaffold, script run, citation quota or fixed iteration count.
 
 Useful requests:
 
@@ -43,13 +55,19 @@ Useful requests:
 - “This manuscript is nearly final. Run cold reads with fresh readers, fix what they misread, and tell me what you changed and what you declined.”
 - “Redraw Figure 2 in the house style so it would look at home in JAMA. Keep the existing group colors.”
 
+For the companion skills:
+
+- “Audit my project in `<folder>`: verify every reported number, judge the analysis, and propose a reorganization. Change nothing until I approve.” (senior-investigator-audit)
+- “Which of our cutoffs and exclusions would look arbitrary to a reviewer, and what should we do about each?” (senior-investigator-audit)
+- “Simplify this analysis notebook so a collaborator can follow it, without changing any result.” (readable-scientific-code)
+
 The skill keeps literature identity, source access, claim support and publication status distinct. It reports supplied statistics faithfully; new estimates and analyses require actual computation. It preserves author voice, primary/null/adverse findings and real prespecification while removing irrelevant internal-report language. Humanization means better scientific writing, never detector gaming.
 
 For near-final work, the [cold-reader workflow](skills/biomedical-publication-suite/references/cold-reader-rounds.md) gives the draft or rendered figure to fresh subagents that know nothing about the project, each reading from a different perspective. The main agent weighs their feedback against the evidence, revises, and sends the new version to new readers. The [figure house style](skills/biomedical-publication-suite/references/figure-house-style.md) is the default look for new figures: print-scale type, a restrained palette and working conventions for common figure types, all adjustable. See the [synthetic two-panel figure](skills/biomedical-publication-suite/assets/figure-example.png) with its [print PDF](skills/biomedical-publication-suite/assets/figure-example.pdf) and [reproducible R script](skills/biomedical-publication-suite/assets/figure-example.R), and the [subgroup forest plot](skills/biomedical-publication-suite/assets/forest-example.png) that a fresh agent drew from the guide during testing.
 
 ## Architecture
 
-Start at [SKILL.md](skills/biomedical-publication-suite/SKILL.md). Task-specific references load only when needed. [Optional helpers](skills/biomedical-publication-suite/references/tool-contracts.md) support repeated identifier, file and ledger checks; they do not replace scientific/editorial review. Python 3.10+ standard library is sufficient. Reference lookup can use available tools or manual authoritative inspection.
+Each skill starts at its own SKILL.md: [publication suite](skills/biomedical-publication-suite/SKILL.md), [senior investigator audit](skills/senior-investigator-audit/SKILL.md), and [readable scientific code](skills/readable-scientific-code/SKILL.md). The three share one version number and one weekly [update check](skills/biomedical-publication-suite/references/updates.md). Task-specific references load only when needed. [Optional helpers](skills/biomedical-publication-suite/references/tool-contracts.md) support repeated identifier, file and ledger checks; they do not replace scientific/editorial review. Python 3.10+ standard library is sufficient. Reference lookup can use available tools or manual authoritative inspection.
 
 [Agent adapters](agent-adapters/README.md) point other local clients to the same portable skill. [Research provenance](docs/agent-design-research.md), [publication standards](docs/publication-standards-research.md), and [third-party notices](THIRD_PARTY_NOTICES.md) explain material influences and their limits.
 

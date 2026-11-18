@@ -1,0 +1,4 @@
+interface:
+  display_name: "Senior Investigator Audit"
+  short_description: "Audit, repair, extend, and reorganize one research project"
+  default_prompt: "Use $senior-investigator-audit to audit and strengthen the research project I name: verify and repair the analysis, run the few analyses that earn their place, reorganize the repository safely, and redraft the scientific writing."

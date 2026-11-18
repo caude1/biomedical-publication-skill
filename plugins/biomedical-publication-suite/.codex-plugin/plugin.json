@@ -1,15 +1,15 @@
 {
   "name": "biomedical-publication-suite",
-  "version": "1.5.0",
-  "description": "Evidence-grounded biomedical manuscript drafting, revision, literature and citation verification, statistical reporting, journal adaptation, and submission checks.",
+  "version": "1.6.0",
+  "description": "Three research skills in one plugin: evidence-grounded biomedical manuscript drafting and revision, a senior-investigator audit that verifies, strengthens, and reorganizes a research project, and readable, reproducible scientific code.",
   "author": {
     "name": "caude1"
   },
   "skills": "./skills/",
   "interface": {
     "displayName": "Biomedical Publication Suite",
-    "shortDescription": "Reason, write, and refine biomedical publications.",
-    "longDescription": "Use scientific reasoning and editorial judgment to find the strongest defensible manuscript story, build coherent publication prose, refine concise captions, preserve author voice and scientific meaning, verify sources, and prepare journal and reviewer materials. Optional helpers support specific checks without imposing automated workflows.",
+    "shortDescription": "Write, audit, and code biomedical research.",
+    "longDescription": "Three skills for biomedical research. biomedical-publication-suite finds the strongest defensible story and writes and refines manuscripts, figures, supplements, letters, and reviewer responses. senior-investigator-audit takes over a research project as its senior investigator: it reproduces and verifies the analysis, judges each analytic choice, runs only the analyses that earn their place, reorganizes the repository safely, and redrafts the paper. readable-scientific-code writes and simplifies analysis code that its readers can follow and reproduce, using established packages instead of reinventing them.",
     "developerName": "caude1",
     "category": "Research",
     "capabilities": [
@@ -20,7 +20,10 @@
       "Preserve author voice and protected scientific content",
       "Audit before-and-after revision invariants",
       "Prepare reviewer responses",
-      "Check submission readiness"
+      "Check submission readiness",
+      "Audit and strengthen a research project",
+      "Verify reported numbers against the code",
+      "Write readable, reproducible analysis code"
     ],
     "defaultPrompt": "Use $biomedical-publication-suite to revise this biomedical artifact while preserving its evidence, claim strength, and authorial voice."
   }

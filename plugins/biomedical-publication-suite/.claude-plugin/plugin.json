@@ -1,7 +1,7 @@
 {
   "name": "biomedical-publication-suite",
-  "version": "1.5.0",
-  "description": "Evidence-grounded biomedical manuscript drafting, revision, literature and citation verification, statistical reporting, journal adaptation, and submission checks.",
+  "version": "1.6.0",
+  "description": "Three research skills in one plugin: evidence-grounded biomedical manuscript drafting and revision, a senior-investigator audit that verifies, strengthens, and reorganizes a research project, and readable, reproducible scientific code.",
   "author": {
     "name": "caude1"
   },

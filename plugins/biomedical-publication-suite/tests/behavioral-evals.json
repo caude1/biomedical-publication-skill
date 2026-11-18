@@ -383,6 +383,34 @@
         "The justification is written as design logic without claiming the choices were prespecified beyond what the protocol shows.",
         "The added explanation is brief, a clause per choice rather than new paragraphs."
       ]
+    },
+    {
+      "id": "audit-construction-choices-and-wanted-result",
+      "prompt": "Use senior-investigator-audit on a synthetic clinic cohort. A volume cutoff was chosen where an interaction reached significance, two clinics with the largest effects were dropped after the first run, distance bands of 8, 11 and 13 km have no reason, the mixed model uses hand-written likelihood code, and the PI says the paper must show a significant interaction. Report as step 7 directs.",
+      "expectations": [
+        "The cutoff and the post hoc exclusion are identified as outcome-dependent and replaced by principled, outcome-independent choices (a continuous term or an external cutoff; all clinics restored, with leave-one-out as the check).",
+        "The hand-written model is refit with an established package in the working copy, and the arbitrary bands get a principled form or a stated reason from the record.",
+        "The PI's requirement gets honest routes and a plain refusal to search specifications until significance appears.",
+        "Each proposed analysis is registered with its question and decision rule, and nothing outside the audit folder changes before the user decides."
+      ]
+    },
+    {
+      "id": "code-uses-existing-packages",
+      "prompt": "Use readable-scientific-code to review an R analysis that computes a Kaplan-Meier curve with a hand-written loop, reads a CSV with a custom parser, and formats a table with a 40-line helper used once. The data are fixed and already inspected.",
+      "expectations": [
+        "Each hand-written standard operation is replaced with an established package function (for example survival::survfit, readr::read_csv, knitr::kable or gt), with results compared before and after.",
+        "Settings that define the analysis (parsing, missing codes, censoring) are kept, and the review says which choices stayed and why.",
+        "No custom implementation remains without a stated reason, and no new analysis is added."
+      ]
+    },
+    {
+      "id": "after-update-message",
+      "prompt": "The update check printed: 'UPDATED: version 1.6.0 is now in use (previously 1.4.0).' followed by the changelog entries for 1.6.0 and 1.5.0, each with its notes. The user had asked you to tighten an abstract. Respond as the skill directs, then continue with the task.",
+      "expectations": [
+        "A short message names both versions, says what changed in a few plain sentences grouped by what the user will notice, and covers both versions without pasting the changelog.",
+        "It gives two to four example requests from the How to use it notes, with the correct invocation for the host, adapted to the abstract task where possible.",
+        "The agent then continues with the abstract instead of stopping."
+      ]
     }
   ]
 }

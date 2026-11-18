@@ -1,5 +1,21 @@
 # Changelog
 
+## 1.6.0 (2026-11-18)
+
+The plugin now holds three skills. Alongside the publication suite come **senior-investigator-audit**, which takes over an existing research project as its senior investigator (it reproduces the analysis, verifies every reported number, repairs errors, judges each analytic choice, runs only the analyses that earn their place, reorganizes the repository safely, and redrafts the paper), and **readable-scientific-code**, which writes and simplifies analysis code that its readers can follow and reproduce. All three use established packages and libraries by default and write custom code only for a stated reason. After an update, you now hear what changed since your previous version and how to use it.
+
+- **senior-investigator-audit.** Works in its own `_audit/` folder and changes nothing in your project until you approve its recommendations, then implements exactly what you approved, archives instead of deleting, and proves the main analysis still runs. Construction choices (which variables define groups, cutoffs, exclusions, how groups are formed) are held to an airtight standard that does not depend on the outcomes, an arbitrariness review covers every choice a reader could take as arbitrary, lists of events are checked for missed events as well as false ones, and a result someone wants is reached only by an honest route.
+- **readable-scientific-code.** Notebook-first, proportionate code for coursework and for exploratory and publishable analyses, with scientific choices kept visible and results preserved when code is simplified.
+- **Established packages first** in all three skills: a standard task uses a maintained package or library, and a hand-written version needs a stated reason.
+- **Update notes.** Right after you accept an update, and again on first use of the new version if you missed it, the agent tells you what changed since the version you had and gives a short tutorial.
+
+**How to use it**
+
+- "Audit my project in `<folder>`: verify the numbers, judge the analysis, and propose a reorganization." The audit reports and asks before it changes anything.
+- "Which of our cutoffs and exclusions would look arbitrary to a reviewer, and what should we do about each?"
+- "Simplify this analysis notebook so a collaborator can follow it, without changing any result."
+- In Claude Code, call the new skills as `/biomedical-publication-suite:senior-investigator-audit` and `/biomedical-publication-suite:readable-scientific-code`; in Codex, as `$senior-investigator-audit` and `$readable-scientific-code`.
+
 ## 1.5.0 (2026-11-18)
 
 New guidance on writing for a reader who has never seen the project, drawn from two long rounds of revising real manuscripts and stated as general principles for any paper. A new guide, `references/reader-friction.md`, sets the standard that a reader should never have to stop and ask what a phrase means, why the authors made a choice, or what a term refers to. It covers giving every number, threshold, period, or comparison that could look arbitrary its reason, spending space on what makes a result believable instead of on doubts the team resolved during the analysis, and the sentence and paragraph habits that cause friction, with a section on methods-heavy papers for clinical readers.

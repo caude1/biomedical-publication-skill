@@ -6,7 +6,7 @@ These notes are for anyone, person or coding agent, who changes this repository.
 
 People install this skill as a plugin, and Claude Code delivers an update only when the version number changes. So whenever a change touches `plugins/biomedical-publication-suite/skills/` or either `plugin.json`:
 
-1. Raise `"version"` in both `plugins/biomedical-publication-suite/.claude-plugin/plugin.json` and `plugins/biomedical-publication-suite/.codex-plugin/plugin.json`. They must match. Use the third number for fixes and wording (1.3.4 → 1.3.5), the second for new guidance or workflows (1.3.5 → 1.4.0).
+1. Raise `"version"` in both `plugins/biomedical-publication-suite/.claude-plugin/plugin.json` and `plugins/biomedical-publication-suite/.codex-plugin/plugin.json`, and the number in `plugins/biomedical-publication-suite/skills/biomedical-publication-suite/VERSION`, which the skill's update check compares with the published one. All three must match. Use the third number for fixes and wording (1.3.4 → 1.3.5), the second for new guidance or workflows (1.3.5 → 1.4.0).
 2. Add a `## <version> (<date>)` entry at the top of `plugins/biomedical-publication-suite/CHANGELOG.md`. Its first paragraph becomes the release note, so write it for the people who installed the skill.
 3. Run the checks from `plugins/biomedical-publication-suite`:
 

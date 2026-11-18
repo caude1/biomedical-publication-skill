@@ -63,6 +63,11 @@ def validate(root: Path=ROOT) -> list[str]:
         if p.is_file() and p.suffix in {'.md','.py','.json','.yaml','.toml','.sh'} and '.git' not in p.parts and p.name!='validate_suite.py':
             if re.search(r'(?<![\w.])/(?:Users|home)/[A-Za-z0-9_.-]+/', p.read_text(errors='ignore')):
                 errors.append(f'{p.relative_to(root)}: contains an absolute home-directory path')
+    version_file=skill/'VERSION'
+    if not version_file.is_file():
+        errors.append('Missing skills/biomedical-publication-suite/VERSION (read by the update check)')
+    elif version_file.read_text().strip()!=manifest.get('version'):
+        errors.append('skills/biomedical-publication-suite/VERSION differs from the plugin manifest version')
     claude=root/'.claude-plugin/plugin.json'
     if claude.exists() and json.loads(claude.read_text()).get('version')!=manifest.get('version'):
         errors.append('Plugin manifest versions differ between .codex-plugin and .claude-plugin')

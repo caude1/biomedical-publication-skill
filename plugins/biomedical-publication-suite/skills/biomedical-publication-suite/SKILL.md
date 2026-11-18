@@ -2,11 +2,16 @@
 name: biomedical-publication-suite
 description: Draft, revise, or review biomedical manuscripts from study evidence. Use for a paper's narrative, scientific prose, figures and supplements, literature and citation checks, journal adaptation, coauthor materials, or reviewer responses. Includes reporting from existing analyses and preparing submission files.
 license: MIT
+allowed-tools: Bash(python3 ${CLAUDE_SKILL_DIR}/scripts/check_update.py)
 ---
 
 # Biomedical Publication Suite
 
 Write for a clinician or scientist who knows the field and is encountering this study for the first time. Give that reader a reason to care about the question, the evidence needed to judge the answer, and a conclusion they can use.
+
+## Check for updates
+
+The first time this skill is used in a session, run its update check as one command with nothing chained to it. In Claude Code the command is `python3 ${CLAUDE_SKILL_DIR}/scripts/check_update.py`. Elsewhere, run `scripts/check_update.py` from this skill's folder with `python3`. It contacts GitHub at most once a week, sends nothing about the user or their work, and never changes the skill. If it prints `UPDATE AVAILABLE`, tell the user in one or two sentences, show the commands it printed and offer to run them; run them only on the user's yes, then continue with the task. Mention any other result only if asked. Skip the check when the user wants no network use.
 
 ## Start with the requested artifact
 

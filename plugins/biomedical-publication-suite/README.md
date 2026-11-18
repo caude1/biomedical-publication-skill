@@ -18,7 +18,7 @@ codex plugin marketplace add caude1/biomedical-publication-skill
 codex plugin add biomedical-publication-suite@biomedical-publication-suite
 ```
 
-To receive updates automatically in Claude Code, type `/plugin`, open **Marketplaces**, select `biomedical-publication-suite` and choose **Enable auto-update**. In Codex, run `codex plugin marketplace upgrade biomedical-publication-suite` now and then; it updates the installed copy in place.
+About once a week, when the skill is used, it checks whether a newer version is published and, if so, tells you and offers to run the update command. It sends nothing about you or your work; set `BPS_UPDATE_CHECK=off` to turn the check off. To receive updates automatically in Claude Code, type `/plugin`, open **Marketplaces**, select `biomedical-publication-suite` and choose **Enable auto-update**. In Codex, run `codex plugin marketplace upgrade biomedical-publication-suite` now and then; it updates the installed copy in place.
 
 For other agents, unzip `biomedical-publication-suite.zip` from the [latest release](https://github.com/caude1/biomedical-publication-skill/releases/latest) into the agent's skills folder.
 

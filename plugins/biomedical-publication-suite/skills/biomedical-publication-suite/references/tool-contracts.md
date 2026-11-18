@@ -2,7 +2,7 @@
 
 Use these only when a concrete file/metadata check benefits from deterministic assistance. The boundary is simple: a helper may answer a question that has a mechanical answer (does this identifier resolve, did this number change, is this interval ordered, does this row have a locator). Whether prose is clear, calibrated, well ordered or free of tics is judged by reading ([prose register](prose-register.md)), and no helper output should be used to decide it. The normal workflow is manual source reading, reasoning, editing and cold review. No script or particular file layout is mandatory for publication work. Commands are examples; replace `<skill-dir>` with the directory containing SKILL.md and use actual project paths.
 
-All bundled helpers use Python 3.10+ standard library; no pip package, API key or hosted agent service is required. Only identifier verification accesses the network. Read its [contract](identifier-verification.md) before use. Other helpers work locally and do not send manuscript/data content anywhere.
+All bundled helpers use Python 3.10+ standard library; no pip package, API key or hosted agent service is required. Two helpers access the network. Identifier verification looks up public identifiers; read its [contract](identifier-verification.md) before use. The weekly `check_update.py` reads this skill's public version number and sends nothing else. The other helpers work locally, and no helper sends manuscript or data content anywhere.
 
 ## Choose a tool for a specific need
 

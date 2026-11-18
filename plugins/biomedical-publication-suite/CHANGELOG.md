@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.4.0 (2026-11-17)
+
+The skill now tells you when a newer version is published. About once a week, the first time it is used in a session, it reads the public version number, compares it with your copy, and if yours is older, shows the update command for Claude Code, Codex or a zip install and offers to run it. It never updates itself, sends nothing about you or your work, and keeps its note of the last check outside the skill folder. Set `BPS_UPDATE_CHECK=off` to turn it off.
+
 ## 1.3.4 (2026-11-17)
 
 Updates now reach people who installed the plugin: each release is published automatically with a new version number, and the README explains how to receive updates in Claude Code and Codex. No change to the skill's guidance.
